@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Count down</title>
+
+    </head>
+    <body>
+        <h1>Happy Birthday Countdown</h1>
+        <div id="countdown" class="countdown">
+            <div class="time">
+                <h2 id="days"></h2>
+                <small>Days</small>
+            </div>
+
+            <div class="time">
+                <h2 id="hours"></h2>
+                <small>Hours</small>
+            </div>
+
+            <div class="time">
+                <h2 id="minutes"></h2>
+                <small>Minutes</small>
+            </div>
+
+            <div class="time">
+                <h2 id="seconds"></h2>
+                <small>Seconds</small>
+            </div>
+
+        </div>
+        
+        <script>
+            const days=document.querySelectorAll('days');
+const hours=document.querySelectorAll('hours');
+const minutes=document.querySelectorAll('minutes');
+const seconds=document.querySelectorAll('seconds');
+ 
+const currentbirthday= new Date().getFullYear();
+
+const birthday = new Date(`August 10 2021 ${currentbirthday + 1} 00:00:00`);
+
+//update countdowntime
+function updatecountdown(){
+    const currentTime = new Date();
+    const diff = birthday - currentTime;
+    const d = Math.floor(diff / 1000/60/60/24);
+    const h = Math.floor(diff / 1000/60/60)%24;
+    const m = Math.floor(diff / 1000/60)%60;
+    const s = Math.floor(diff / 1000)%60;
+    document.getElementById('days').innerHTML=d;
+    document.getElementById('hours').innerHTML=h<10? '0' +h : h;
+    document.getElementById('minutes').innerHTML=m<10? '0'+m:m;
+    document.getElementById('seconds').innerHTML=s<10? '0'+s:s;
+    
+    minutes.innerHTML=m<10? '0'+m:m;
+    
+}
+
+
+setInterval(updatecountdown,1000);
+
+        </script>
+    </body>
+</html>
